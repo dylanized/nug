@@ -1,0 +1,28 @@
+{
+  "styles": {
+    "colors": {
+      "feature": "#ff5349",
+      "cloud": "#e8e8e8",
+      "chalk": "#ddd",
+      "silver": "silver",
+      "slate": "#777",
+      "charcoal": "#111",
+      "black": "#000",
+      "white": "#fff",
+      "lagoon": "#0d585e",
+      "piney": "#1c5f17",
+      "leafy": "#88a336",
+      "limey": "#a3b846",
+      "frog": "#cbdc7f",
+      "loyal": "#ffe112",
+      "citrus": "#fff692",
+      "lagoon": "#1c5f17",
+      "lagoon": "#b11616",
+      "tangy": "#ee5e11",
+      "nectar": "#ed7f42",
+      "peachy": "#fac65c",
+      "royal": "#a8a6a7",
+      "sky": "#a8d3e6"
+    }
+  }
+}

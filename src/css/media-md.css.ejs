@@ -1,0 +1,127 @@
+/* tablet md */
+
+@media (min-width: <%= theme.breakpointTablet %>) {
+  /* display */
+  .md-d-block {
+    display: block !important;
+  }
+  .md-d-flex {
+    display: flex !important;
+  }
+  .md-d-grid {
+    display: grid !important;
+  }
+  .md-d-inline {
+    display: inline !important;
+  }
+  .md-d-inline-block {
+    display: inline-block !important;
+  }
+  .md-d-none {
+    display: none !important;
+  }
+  /* margin */
+  <% for (const spacer_id in styles.spacers) { -%>
+    .md-m-<%= spacer_id %> {
+      margin: var(--sp-<%= spacer_id %>) !important;
+    }
+    .md-mx-<%= spacer_id %> {
+      margin-left: var(--sp-<%= spacer_id %>) !important;
+      margin-right: var(--sp-<%= spacer_id %>) !important;
+    }
+    .md-my-<%= spacer_id %> {
+      margin-bottom: var(--sp-<%= spacer_id %>) !important;
+      margin-top: var(--sp-<%= spacer_id %>) !important;
+    }
+    .md-mt-<%= spacer_id %> {
+      margin-top: var(--sp-<%= spacer_id %>) !important;
+    }
+    .md-mr-<%= spacer_id %> {
+      margin-right: var(--sp-<%= spacer_id %>) !important;
+    }
+    .md-mb-<%= spacer_id %> {
+      margin-bottom: var(--sp-<%= spacer_id %>) !important;
+    }
+    .md-ml-<%= spacer_id %> {
+      margin-left:var(--sp-<%= spacer_id %>) !important;
+    }
+    .md-mx-auto {
+      margin-left: auto !important;
+      margin-right: auto !important;
+    }
+  <% } %>
+  /* padding */
+  <% for (const spacer_id in styles.spacers) { -%>
+    .md-p-<%= spacer_id %> {
+      padding: var(--sp-<%= spacer_id %>) !important;
+    }
+    .md-px-<%= spacer_id %> {
+      padding-left: var(--sp-<%= spacer_id %>) !important;
+      padding-right: var(--sp-<%= spacer_id %>) !important;
+    }
+    .md-py-<%= spacer_id %> {
+      padding-bottom: var(--sp-<%= spacer_id %>) !important;
+      padding-top: var(--sp-<%= spacer_id %>) !important;
+    }
+    .md-pt-<%= spacer_id %> {
+      padding-top: var(--sp-<%= spacer_id %>) !important;
+    }
+    .md-pr-<%= spacer_id %> {
+      padding-right: var(--sp-<%= spacer_id %>) !important;
+    }
+    .md-pb-<%= spacer_id %> {
+      padding-bottom: var(--sp-<%= spacer_id %>) !important;
+    }
+    .md-pl-<%= spacer_id %> {
+      padding-left: var(--sp-<%= spacer_id %>) !important;
+    }
+  <% } %>
+
+  /* position */
+  .md-position-relative {
+    position: relative !important;
+  }
+  .md-position-absolute {
+    position: absolute !important;
+  }
+  <% for (const spacer_id in styles.spacers) { -%>
+    .md-top-<%= spacer_id %> {
+      top: var(--sp-<%= spacer_id %>) !important;
+    }
+    .md-right-<%= spacer_id %> {
+      right: var(--sp-<%= spacer_id %>) !important;
+    }
+    .md-bottom-<%= spacer_id %> {
+      bottom: var(--sp-<%= spacer_id %>) !important;
+    }
+    .md-left-<%= spacer_id %> {
+      left: var(--sp-<%= spacer_id %>) !important;
+    }
+  <% } %>
+  /* width percent */
+  <% for (const width_percent in styles.widths) { -%>
+    .md-w-<%= width_percent %> {
+      width: <%= styles.widths[width_percent] %> !important;
+    }
+  <% } %>
+
+  /* width pixels */
+  <% for (const width_pixels in styles.widthsPx) { -%>
+    .md-w-<%= styles.widthsPx[width_pixels] %> {
+      width: <%= styles.widthsPx[width_pixels] %> !important;
+    }
+  <% } -%>
+
+  /* width spacers */
+  <% for (const spacer_id in styles.spacers) { -%>
+    .md-w-<%= spacer_id %> {
+      width: <%= styles.spacers[spacer_id] %> !important;
+    }
+    .md-max-w-<%= spacer_id %> {
+      max-width: <%= styles.spacers[spacer_id] %> !important;
+    }
+    .md-min-w-<%= spacer_id %> {
+      min-width: <%= styles.spacers[spacer_id] %> !important;
+    }
+  <% } %>
+}

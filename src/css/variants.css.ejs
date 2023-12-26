@@ -1,0 +1,64 @@
+/* variants */
+<% for (const variant_slug in variants) { -%>
+  .<%= variant_slug %> {
+    background-color: var(--color-<%= variants[variant_slug].matte %>) !important;
+    border-color: var(--color-<%= variants[variant_slug].highlight %>) !important;
+    <% if (variants[variant_slug].text) { %>
+      color: var(--color-<%= variants[variant_slug].text %>);
+    <% } %>
+  }
+  .<%= variant_slug %> th,
+  .<%= variant_slug %> td {
+    background-color: var(--color-<%= variants[variant_slug].matte %>) !important;
+    border-color: var(--color-<%= variants[variant_slug].highlight %>) !important;
+  }
+  .<%= variant_slug %> th,
+  .<%= variant_slug %> tfoot td {
+    color: var(--color-<%= variants[variant_slug].highlight %>) !important;
+  }
+  <% if (variants[variant_slug].link) { %>
+    .<%= variant_slug %> a:link,
+    .<%= variant_slug %> a:visited {
+      color: var(--color-<%= variants[variant_slug].link %>) !important;
+    }
+  <% } %>
+  <% if (variants[variant_slug].hover) { %>
+    .<%= variant_slug %> a:hover,
+    .<%= variant_slug %> a:active {
+      color: var(--color-<%= variants[variant_slug].hover %>) !important;
+    }
+  <% } else { %>
+    .<%= variant_slug %> a:hover,
+    .<%= variant_slug %> a:active {
+      color: var(--color-<%= variants[variant_slug].highlight %>) !important;
+    }
+  <% } %>
+  .border-<%= variant_slug %> {
+    border-color: var(--color-<%= variants[variant_slug].highlight %>) !important;
+  }
+  .bg-<%= variant_slug %> {
+    background-color: var(--color-<%= variants[variant_slug].matte %>) !important;
+  }
+  .text-<%= variant_slug %> {
+    color: var(--color-<%= variants[variant_slug].highlight %>) !important;
+  }
+  a.<%= variant_slug %> {
+    color: var(--color-<%= variants[variant_slug].highlight %>) !important;
+  }
+  :not([disabled]).btn-<%= variant_slug %> {
+    background-color: var(--color-<%= variants[variant_slug].highlight %>);
+  }
+  :not([disabled]).btn-<%= variant_slug %>:hover,
+  :not([disabled]).btn-<%= variant_slug %>:active {
+    background-color: var(--color-<%= variants[variant_slug].matte %>);
+  }
+  :not([disabled]).btn-outline.btn-<%= variant_slug %> {
+    background-color: white;
+    border-color: var(--color-<%= variants[variant_slug].highlight %>);
+    color: var(--color-<%= variants[variant_slug].highlight %>);
+  }
+  :not([disabled]).btn-clear.btn-<%= variant_slug %> {
+    background-color: white;
+    color: var(--color-<%= variants[variant_slug].highlight %>);
+  }
+<% } %>

@@ -1,0 +1,22 @@
+{
+  "styles": {
+    "colors": {
+      "feature": "#ff5349",
+      "cloud": "#f3f3f7",
+      "chalk": "#ddd",
+      "aluminum": "#d5d5d9",
+      "slate": "#777",
+      "charcoal": "#111",
+      "black": "#000",
+      "white": "#fff",
+      "sigma-pink": "#eb3c96",
+      "sigma-yellow": "#ffc832",
+      "sigma-green": "#149b5f",
+      "sigma-cyan": "#2dbecd",
+      "sigma-blue": "#0f69af",
+      "sigma-navy": "navy",
+      "sigma-purple": "#503291",
+      "sigma-plum": "#3a1d78"
+    }
+  }
+}

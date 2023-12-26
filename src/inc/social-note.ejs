@@ -1,0 +1,29 @@
+<li class="ml-0 pl-0 mb-1">
+  <blockquote class="border-bottom-dashed border-1 pl-2 pb-2 mb-0">
+    <div class="note-footer d-flex justify-space-between">
+      <h6 class="mb-1">
+        <a href="/user/<%= post.authorHandle %>" class="text-underline-none text-whale hover-cobalt">@<%= post.authorHandle %></a> <span class="text-cloud">&bull;</span> <span class="text-normal text-whale"><%= post.authorName %></span>
+      </h6>
+      <div class="text-xs text-whale text-verdana">
+        <a href="/posts/<%= i %>" title="View Post" class="text-whale hover-cobalt text-normal text-underline-none">
+        <% if (post.location) { %>
+         <%= post.location %> &bull;
+        <% } %>
+        <%= post.timestamp %>
+        </a>
+      </div>
+    </div>
+    <p class="mb-05 text-charcoal"><%= post.content %></p>
+    <div class="note-footer d-flex justify-space-between text-sm text-cloud pt-05">
+      <div>
+        <i title="Reply to post" class="hover-sunshine cursor-pointer d-inline-block mr-05 fa-solid fa-comment"></i>
+        <i title="Republic post" class="hover-sunshine cursor-pointer d-inline-block mr-05 fa-solid fa-retweet"></i>
+        <i title="Star post" class="hover-sunshine cursor-pointer d-inline-block mr-05 fa-solid fa-star"></i>
+      </div>
+      <div>
+        <i title="Share post" class="hover-sunshine cursor-pointer d-inline-block ml-1 fa-solid fa-share"></i>
+        <i title="Save post" class="hover-sunshine cursor-pointer d-inline-block ml-1 fa-solid fa-bookmark"></i>
+      </div>
+    </div>
+  </blockquote>
+</li>

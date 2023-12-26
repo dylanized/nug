@@ -1,0 +1,244 @@
+{
+  "contents": [
+    {
+      "desc": "Basic typography elements",
+      "name": "Homepage",
+      "path": "/index"
+    },
+    {
+      "desc": "Error message",
+      "name": "404",
+      "path": "/404"
+    },
+    {
+      "desc": "(This page) Simple table",
+      "name": "Table of Contents",
+      "path": "/contents"
+    },
+    {
+      "desc": "Basic text elements",
+      "name": "Typography",
+      "path": "/typography"
+    },
+    {
+      "desc": "Image alignment",
+      "name": "Images",
+      "path": "/images"
+    },
+    {
+      "desc": "Form with fields & basic buttons",
+      "name": "Form",
+      "path": "/form"
+    },
+    {
+      "desc": "Headings",
+      "name": "Headings",
+      "path": "/headings"
+    },
+    {
+      "desc": "Lists",
+      "name": "Lists",
+      "path": "/lists"
+    },
+    {
+      "desc": "Table examples",
+      "name": "Tables",
+      "path": "/tables"
+    },
+    {
+      "desc": "Text utilities",
+      "name": "Utilities",
+      "path": "/utilities"
+    },
+    {
+      "desc": "Images with borders",
+      "name": "Image Borders",
+      "path": "/image-borders"
+    },
+    {
+      "desc": "Button styles",
+      "name": "Buttons",
+      "path": "/buttons"
+    },
+    {
+      "desc": "Badge & tag styles",
+      "name": "Badges",
+      "path": "/badges"
+    },
+    {
+      "desc": "Panel component",
+      "name": "Panels",
+      "path": "/panels"
+    },
+    {
+      "desc": "Card component",
+      "name": "Cards",
+      "path": "/cards"
+    },
+    {
+      "desc": "Color palette and grid example",
+      "name": "Colors",
+      "path": "/colors"
+    },
+    {
+      "desc": "Reusable groupings of colors",
+      "name": "Variants",
+      "path": "/variants"
+    },
+    {
+      "desc": "Tags, quotes & buttons",
+      "name": "Element Variants",
+      "path": "/element-variants"
+    },
+    {
+      "desc": "Tables with variants",
+      "name": "Table Variants",
+      "path": "/table-variants"
+    },
+    {
+      "desc": "Panels with variants",
+      "name": "Panel Variants",
+      "path": "/panel-variants"
+    },
+    {
+      "desc": "Cards with variants",
+      "name": "Card Variants",
+      "path": "/card-variants"
+    }
+  ],
+  "footerText": "Created 2023",
+  "posts": [
+    {
+      "authorHandle": "foobar",
+      "authorName": "Foobar McGee",
+      "content": "The quick brown fox jumps over the lazy dog",
+      "timestamp": "1min"
+    },
+    {
+      "authorHandle": "jerrbear",
+      "authorName": "Jerry Garcia",
+      "content": "Just testing out my nug",
+      "timestamp": "1hr"
+    },
+    {
+      "authorHandle": "foobar",
+      "authorName": "Foobar McGee",
+      "content": "Here is a link: https://google.com",
+      "timestamp": "11s"
+    },
+    {
+      "authorHandle": "lincoln",
+      "authorName": "Honest Abe",
+      "content": "Four score and seven years ago our fathers brought forth, upon this continent, a new nation, conceived in liberty, and dedicated to the proposition that all men are created equal.",
+      "timestamp": "1min",
+      "location": "Springfield, Mass"
+    },
+    {
+      "authorHandle": "jerrbear",
+      "authorName": "Jerry Garcia",
+      "content": "Just testing out my nug",
+      "timestamp": "1hr"
+    },
+    {
+      "authorHandle": "foobar",
+      "authorName": "Foobar McGee",
+      "content": "Here is a link: https://google.com",
+      "timestamp": "11s"
+    },
+    {
+      "authorHandle": "foobar",
+      "authorName": "Foobar McGee",
+      "content": "The quick brown fox jumps over the lazy dog",
+      "timestamp": "1min"
+    },
+    {
+      "authorHandle": "bobbyweir",
+      "authorName": "Bob Weir",
+      "content": "Come see Wolf Bros",
+      "timestamp": "1hr",
+      "location": "Marin County"
+    },
+    {
+      "authorHandle": "foobar",
+      "authorName": "Foobar McGee",
+      "content": "Here is a link: https://google.com",
+      "timestamp": "11s"
+    }
+  ],
+  "primaryNav": [
+    {
+      "href": "/",
+      "text": "Home",
+      "title": "Home"
+    },
+    {
+      "href": "/foo",
+      "text": "Foo",
+      "title": "footer"
+    },
+    {
+      "href": "/bar",
+      "text": "Bar",
+      "title": "Bar"
+    },
+    {
+      "href": "/baz",
+      "text": "Baz",
+      "title": "Baz"
+    }
+  ],
+  "siteName": "Futility UI",
+  "siteTagline": "The Simple Web Framework",
+  "topics": [
+    {
+      "name": "Something",
+      "count": 99,
+      "slug": "something"
+    },
+    {
+      "name": "Foobar",
+      "count": 15,
+      "slug": "foobar"
+    },
+    {
+      "name": "somethingElse",
+      "count": 12,
+      "slug": "something-else"
+    },
+    {
+      "name": "aTopic",
+      "count": 300,
+      "slug": "a-topic"
+    },
+    {
+      "name": "anotherTopic",
+      "count": 5005,
+      "slug": "another-topic"
+    },
+    {
+      "name": "foobar",
+      "count": 100,
+      "slug": "foobar"
+    },
+    {
+      "name": "Biden2024",
+      "count": 12,
+      "slug": "biden-2024"
+    },
+    {
+      "name": "USA",
+      "count": 99,
+      "slug": "usa"
+    }
+  ],
+  "user": {
+    "handle": "foobar",
+    "desc": "Just a dude trying not to screw up",
+    "link": "https://google.com",
+    "name": "Foobar McGee",
+    "posts": 99,
+    "followers": 1200,
+    "following": 5,
+    "mentions": 15
+  }
+}

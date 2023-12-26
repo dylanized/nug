@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title><%= siteName %> :: <%= siteTagline %></title>
+    <% stylesheets.forEach((stylesheet) => { %>
+      <link rel="stylesheet" href="<%= stylesheet %>">
+    <% }); %>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  </head>
+  <body class="page-social bg-slate">
+  <nav class="midnite w-100 p-1 text-verdana d-flex">
+    <ul class="list-inline">
+      <li class="mr-1"><a href="/" class="hover-sunshine"><i class="fa-solid fa-house d-inline-block mr-05"></i><span class="d-none lg-d-inline"> Home</span></a></li>
+      <li class="mr-1"><a href="/explore" class="hover-sunshine"><i class="fa-solid fa-hashtag d-inline-block mr-05"></i><span class="d-none lg-d-inline"> Explore</span></a></li>
+      <li class="mr-1"><a href="/activity" class="hover-sunshine"><i class="fa-solid fa-at d-inline-block mr-05"></i><span class="d-none lg-d-inline"> Activity</span> <span class="d-none md-d-inline badge text-tangerine border-tangerine" style="margin-left:3px; padding:3px 6px;position:relative;top:-1px;"><%= user.mentions %></span></a></li>
+      <li class="mr-1"><a href="/<%= user.handle %>" class="hover-sunshine"><i class="fa-solid fa-user d-inline-block mr-05"></i><span class="d-none lg-d-inline"> Profile</span></a></li>
+    </ul>
+    <ul class="list-inline">
+      <li class="mr-1"><a href="/saved" class="hover-sunshine"><i class="fa-solid fa-bookmark d-inline-block mr-05"></i><span class="d-none lg-d-inline"> Saved</span></a></li>
+      <li><a class="hover-sunshine" href="/account"><i class="fa-solid fa-gear d-inline-block mr-05"></i><span class="d-none lg-d-inline"> Account</span></a></li>
+    </ul>
+  </nav>

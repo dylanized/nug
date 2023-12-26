@@ -1,0 +1,25 @@
+{
+  "theme": {
+    "blockquoteBorderColor": "5px",
+    "blockquoteBorderWidth": "silver",
+    "bodyBgColor": "white",
+    "bodyListType": "square",
+    "bodyTextColor": "charcoal",
+    "bodyFont": "serif",
+    "breakpointTablet": "600px",
+    "breakpointDesktop": "975px",
+    "containerWidth": "900px",
+    "headingColor": "feature",
+    "headingFont": "serif",
+    "tableBorderColor": "cloud",
+    "tableBorderWidth": "5px",
+    "tableTdBgColor": "white",
+    "tableTdBorderColor": "cloud",
+    "tableTdBorderWidth": "1px",
+    "tableTdTextColor": "white",
+    "tableThBgColor": "charcoal",
+    "tableThBorderColor": "charcoal",
+    "tableThBorderWidth": "1px",
+    "tableThTextColor": "white"
+  }
+}

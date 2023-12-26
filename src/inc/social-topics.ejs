@@ -1,0 +1,8 @@
+<div class="panel bg-white info border-0 shadow d-none md-d-block">
+  <h5 class="text-xs text-slate text-normal mb-2">Trending Topics</h5>
+  <ul class="list-style-none ml-0 pl-0 mb-3">
+    <% topics.forEach(function (topic, i) { %>
+      <li class="mb-1"><a class="tag" href="/topic/<%= topic.slug %>">#<%= topic.name %></a> <span class="text-whale text-xs"><%= topic.count %> posts</span></li>
+    <% }) %>
+  </ul>
+</div>
