@@ -2,9 +2,7 @@
   <h5 class="text-xs text-slate text-normal mb-2">Media Gallery</h5>
   <div>
     <% posts.forEach(function (item, i) { %>
-      <a href="/posts/<%= i %>" class="d-inline-block mr-05 mb-1">
-        <img src="https://picsum.photos/75/75?<%= i %>" alt="">
-      </a>
+      <a href="/posts/<%= i %>" class="d-inline-block align-middle mr-05 mb-1 bg-cloud w-75px aspect-square"><img src="https://picsum.photos/75/75?<%= i %>" alt=""></a>
     <% }) %>
   </div>
 </div>
