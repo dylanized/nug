@@ -1,5 +1,31 @@
 <%- include('inc/head') %>
 <main class="md-d-flex w-100 col-gap-2 p-1 md-p-2">
-  <h1>Activity Page</h1>
+  <!-- Column 1 -->
+  <div class="col-1 w-100 md-w-33">
+    <div class="panel bg-white info border-0 shadow">
+      <p class="mb-2">
+        <img src="https://picsum.photos/800/800" alt="">
+      </p>
+      <h4 class="mb-05">@<%= user.handle %></h4>
+      <h5 class="text-normal mb-1"><%= user.name %></h5>
+      <p class="text-normal text-slate text-sm mb-05"><%= user.desc %></p>
+      <p class="text-normal text-verdana text-xs text-whale mb-2"><a class="text-normal text-whale hover-cobalt text-underline-none" href="<%= user.link %>" title="View User's Link"><%= user.link %></a></p>
+      <ul class="list-inline d-flex justify-space-between">
+        <li class="lh-12"><h4 class="mb-05"><%= user.posts %></h4><div class="text-xs">posts</div></li>
+        <li class="lh-12"><h4 class="mb-05"><%= user.following %></h4><div class="text-xs">following</div></li>
+        <li class="lh-12"><h4 class="mb-05"><%= user.followers %></h4><div class="text-xs">followers</div></li>
+      </ul>
+    </div>
+    <%- include('inc/topics'); %>
+  </div>
+  <!-- Column 2 -->
+  <div class="col-2 w-100 md-w-66">
+    <%- include('inc/timeline'); %>
+  </div>
+  <!-- Column 3 -->
+  <div class="col-3 d-none lg-d-block w-25">
+    <%- include('inc/people'); %>
+    <%- include('inc/gallery'); %>
+  </div>
 </main>
 <%- include('inc/foot') %>

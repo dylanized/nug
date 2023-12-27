@@ -1,5 +1,25 @@
-<%- include('inc/head') %>
+<%- include('inc/head'); %>
 <main class="md-d-flex w-100 col-gap-2 p-1 md-p-2">
-  <h1>Explore page</h1>
+  <!-- Column 1 -->
+  <div class="col-1 w-100 md-w-25">
+    <%- include('inc/topics'); %>
+    <div class="col-3 d-none lg-d-block">
+      <%- include('inc/people'); %>
+    </div>
+  </div>
+  <!-- Column 2 -->
+  <div class="col-2 w-100 md-w-45">
+    <div class="panel info border-0 bg-white p-2 position-relative">
+      <fieldset class="mb-0">
+        <input type="text" value="" placeholder="Term, hashtag, username, location" class="mb-0 d-inline" style="width:87%">
+        <button class="btn w-10 text-center mb-0 position-absolute right-2 top-2"><i class="fa-solid fa-search"></i></button>
+      </fieldset>
+    </div>
+    <%- include('inc/timeline'); %>
+  </div>
+  <!-- Column 3 -->
+  <div class="col-3 w-100 md-w-30">
+    <%- include('inc/gallery'); %>
+  </div>
 </main>
 <%- include('inc/foot') %>

@@ -14,13 +14,13 @@
   <body class="page-social bg-slate">
   <nav class="midnite w-100 p-1 text-verdana d-flex">
     <ul class="list-inline">
-      <li class="mr-1"><a href="/" class="hover-sunshine"><i class="fa-solid fa-house d-inline-block mr-05"></i><span class="d-none lg-d-inline"> Home</span></a></li>
-      <li class="mr-1"><a href="/explore" class="hover-sunshine"><i class="fa-solid fa-hashtag d-inline-block mr-05"></i><span class="d-none lg-d-inline"> Explore</span></a></li>
-      <li class="mr-1"><a href="/activity" class="hover-sunshine"><i class="fa-solid fa-at d-inline-block mr-05"></i><span class="d-none lg-d-inline"> Activity</span> <span class="d-none md-d-inline badge text-tangerine border-tangerine" style="margin-left:3px; padding:3px 6px;position:relative;top:-1px;"><%= user.mentions %></span></a></li>
-      <li class="mr-1"><a href="/<%= user.handle %>" class="hover-sunshine"><i class="fa-solid fa-user d-inline-block mr-05"></i><span class="d-none lg-d-inline"> Profile</span></a></li>
+      <li class="mr-1 <% if (templateSlug === 'index') { %>active<% } %>"><a href="/" class="hover-sunshine"><i class="fa-solid fa-house d-inline-block mr-05"></i><span class="d-none lg-d-inline"> Home</span></a></li>
+      <li class="mr-1 <% if (templateSlug === 'explore') { %>active<% } %>"><a href="/explore" class="hover-sunshine"><i class="fa-solid fa-hashtag d-inline-block mr-05"></i><span class="d-none lg-d-inline"> Explore</span></a></li>
+      <li class="mr-1 <% if (templateSlug === 'activity') { %>active<% } %>"><a href="/activity" class="hover-sunshine"><i class="fa-solid fa-at d-inline-block mr-05"></i><span class="d-none lg-d-inline"> Activity</span> <span class="d-none md-d-inline badge text-tangerine border-tangerine" style="margin-left:3px; padding:3px 6px;position:relative;top:-1px;"><%= user.mentions %></span></a></li>
+      <li class="mr-1 <% if (templateSlug === 'profile') { %>active<% } %>"><a href="/<%= user.handle %>" class="hover-sunshine"><i class="fa-solid fa-user d-inline-block mr-05"></i><span class="d-none lg-d-inline"> Profile</span></a></li>
     </ul>
     <ul class="list-inline">
-      <li class="mr-1"><a href="/saved" class="hover-sunshine"><i class="fa-solid fa-bookmark d-inline-block mr-05"></i><span class="d-none lg-d-inline"> Saved</span></a></li>
-      <li><a class="hover-sunshine" href="/account"><i class="fa-solid fa-gear d-inline-block mr-05"></i><span class="d-none lg-d-inline"> Account</span></a></li>
+      <li class="mr-1 <% if (templateSlug === 'saved') { %>active<% } %>"><a href="/saved" class="hover-sunshine"><i class="fa-solid fa-bookmark d-inline-block mr-05"></i><span class="d-none lg-d-inline"> Saved</span></a></li>
+      <li class="<% if (templateSlug === 'account') { %>active<% } %>"><a class="hover-sunshine" href="/account"><i class="fa-solid fa-gear d-inline-block mr-05"></i><span class="d-none lg-d-inline"> Account</span></a></li>
     </ul>
   </nav>

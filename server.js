@@ -86,12 +86,12 @@ mountHealthCheck(app, {
 });
 
 // Define view helpers
-const buildLocals = (req) => {
-  return Object.assign({}, { req }, themeConfig, themeData);
+const buildLocals = (req, templateSlug) => {
+  return Object.assign({}, { req }, themeConfig, themeData, { templateSlug });
 };
 
 const renderTemplate = (req, res, templateSlug) => {
-  res.render(templateSlug, buildLocals(req));
+  res.render(templateSlug, buildLocals(req, templateSlug));
 };
 
 // Mount route for 'When user requests an ejs file, reject it with a bare 404'
@@ -114,7 +114,14 @@ app.get("/css/:filename", (req, res, next) => {
   }
 });
 
-const pages = ["/account", "/activity", "/explore", "/saved"];
+const pages = [
+  "/account",
+  "/activity",
+  "/explore",
+  "/login",
+  "/saved",
+  "/signup",
+];
 
 const profiles = ["dylanized", "garrett", "jack", "foobar"];
 

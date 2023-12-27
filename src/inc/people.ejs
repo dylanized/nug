@@ -3,7 +3,7 @@
   <ul class="list-style-none ml-0 pl-0 mb-1">
     <% posts.forEach(function (post, i) { %>
       <li class="mb-05">
-        <a href="/user/<%= post.authorHandle %>" class="d-block text-whale hover-cobalt text-underline-none">
+        <a href="/<%= post.authorHandle %>" class="d-block text-whale hover-cobalt text-underline-none">
           <img src="https://picsum.photos/45/45?<%= i %>" alt="" /><h5 class="text-normal d-inline-block ml-05">@<%= post.authorHandle %></h5>
         </a>
       </li>

@@ -1,5 +1,12 @@
 <%- include('inc/head') %>
 <main class="md-d-flex w-100 col-gap-2 p-1 md-p-2">
-  <h1>Saved Page</h1>
+  <!-- Column 2 -->
+  <div class="col-2 w-100 md-w-50">
+    <%- include('inc/timeline'); %>
+  </div>
+  <!-- Column 3 -->
+  <div class="col-3 d-none lg-d-block w-50">
+    <%- include('inc/gallery'); %>
+  </div>
 </main>
 <%- include('inc/foot') %>

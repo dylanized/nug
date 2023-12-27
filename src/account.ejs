@@ -1,5 +1,57 @@
 <%- include('inc/head') %>
 <main class="md-d-flex w-100 col-gap-2 p-1 md-p-2">
-  <h1>Account Page</h1>
+  <div class="panel bg-white info border-0 shadow w-100 md-w-50">
+    <section>
+      <h3>Account Settings</h3>
+      <fieldset>
+        <label for="text-input">Username</label>
+        <input class="w-300px" id="text-input" type="text" value="" placeholder="Placeholder...">
+      </fieldset>
+      <fieldset>
+        <label for="text-input">Owner Name</label>
+        <input class="w-300px" id="text-input" type="text" value="" placeholder="First Name">
+        <input class="w-300px" id="text-input" type="text" value="" placeholder="Last Name">
+      </fieldset>
+      <fieldset>
+        <label for="text-input">Owner Email</label>
+        <input class="w-300px" id="text-input" type="text" value="" placeholder="foobar@gmail.com">
+      </fieldset>
+      <fieldset>
+        <label for="text-input">Date of Birth</label>
+        <input class="w-300px" id="text-input" type="text" value="" placeholder="01/01/1990">
+      </fieldset>
+      <fieldset>
+        <label for="text-input">Owner Phone</label>
+        <input class="w-300px" id="text-input" type="text" value="" placeholder="Placeholder...">
+      </fieldset>
+    </section>
+    <section>
+      <h3>Profile Fields</h3>
+      <fieldset>
+        <label for="file-input">Profile Pic</label>
+        <input id="file-input" type="file" name="file">
+      </fieldset>
+      <fieldset>
+        <label for="text-input">Display Name</label>
+        <input class="w-300px" id="text-input" type="text" value="" placeholder="Foo Bar">
+      </fieldset>
+      <fieldset>
+        <label for="text-input">Bio</label>
+        <input class="w-300px" id="text-input" type="text" value="" placeholder="">
+      </fieldset>
+      <fieldset>
+        <label for="text-input">Link</label>
+        <input class="w-300px" id="text-input" type="text" value="" placeholder="https://foobar.com">
+      </fieldset>
+      <fieldset>
+        <label for="textarea-input">Custom CSS</label>
+        <textarea class="w-500px" id="textarea-input"></textarea>
+      </fieldset>
+    </section>
+    <section>
+      <button class="btn">Save</button>
+      <button class="btn btn-clear">Cancel</button>
+    </section>
+  </div>
 </main>
 <%- include('inc/foot') %>
