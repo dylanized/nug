@@ -12,6 +12,17 @@
   border: 0 !important;
 }
 
+/* aspect ratio */
+.aspect-auto {
+  aspect-ratio: auto;
+}
+.aspect-square {
+  aspect-ratio: 1 / 1;
+}
+.aspect-video {
+  aaspect-ratio: 16 / 9;
+}
+
 /* border */
 <% for (const width_suffix in styles.borderWidths) { -%>
   .border-<%= width_suffix %> {
