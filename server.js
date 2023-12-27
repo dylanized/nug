@@ -114,21 +114,25 @@ app.get("/css/:filename", (req, res, next) => {
   }
 });
 
-const pages = [
-  "/account",
-  "/activity",
-  "/explore",
-  "/login",
-  "/saved",
-  "/signup",
-];
+const protectedPages = ["/account", "/activity", "/explore", "/saved"];
+
+const publicPages = ["/login", "/signup"];
 
 const profiles = ["dylanized", "garrett", "jack", "foobar"];
 
 // Mount route for 'When user requests a template, try to render it'
 app.get("/:slug", (req, res, next) => {
-  // If this page exists, show it...
-  if (pages.includes(`/${req.params.slug}`)) {
+  // If this is a protected page...
+  if (protectedPages.includes(`/${req.params.slug}`)) {
+    // If user logged in, render page, else return error
+    if (req.query.user) {
+      renderTemplate(req, res, req.params.slug);
+    } else {
+      res.redirect("/");
+    }
+  }
+  // Else if this page is a public page, show it
+  else if (publicPages.includes(`/${req.params.slug}`)) {
     renderTemplate(req, res, req.params.slug);
   }
   // Else if this profile exists, show it...
@@ -143,7 +147,11 @@ app.get("/:slug", (req, res, next) => {
 
 // Mount route for 'When user requests base domain, serve the homepage template'
 app.get("/", (req, res) => {
-  renderTemplate(req, res, "index");
+  if (req.query.user) {
+    renderTemplate(req, res, "home");
+  } else {
+    renderTemplate(req, res, "index");
+  }
 });
 
 // Mount route for 'When a user requests any file that doesn't exist, send bare 404'

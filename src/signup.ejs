@@ -1,1 +1,12 @@
-<%- include('inc/account') %>
+<%- include('inc/head') %>
+<main class="md-d-flex w-100 col-gap-2 p-1 md-p-2">
+  <div class="panel bg-white info border-0 shadow w-100 md-w-50">
+    <h2>Create New Account</h2>
+    <%- include('account-fields') %>
+    <section>
+      <button class="btn" name="create_account">Create Account</button>
+      <a href="/" class="btn btn-clear">Cancel</a>
+    </section>
+  </div>
+</main>
+<%- include('inc/foot') %>
