@@ -2,9 +2,12 @@ const config = require("config");
 const ejs = require("ejs");
 const express = require("express");
 const fs = require("fs");
+const jwt = require("jsonwebtoken");
 const os = require("os");
 const path = require("path");
 const pino = require("pino-http");
+const bodyParser = require("body-parser");
+const cookieParser = require("cookie-parser");
 
 // Instantiate logger
 const logConfig = {
@@ -16,6 +19,40 @@ const logger = pino(logConfig);
 // Instantiate Express app, mount logger and error handling middleware
 const app = express();
 app.use(logger);
+
+// Mount body parser and cookie parser middlewares
+app.use(
+  bodyParser.urlencoded({
+    extended: true,
+  }),
+);
+app.use(bodyParser.json());
+app.use(cookieParser());
+
+// Define helper for auth middleware
+let checkToken = (req, res, next) => {
+  // If saved token found...
+  if (req.cookies["nug_auth"]) {
+    // Try to async verify saved token is valid...
+    jwt.verify(
+      req.cookies["nug_auth"],
+      config.get("app.secret"),
+      (err, decoded) => {
+        // If invalid token, redirect back to Login, else proceed
+        if (err) {
+          return res.redirect("/login?error=please_login");
+        } else {
+          req.decoded = decoded;
+          next();
+        }
+      },
+    );
+  }
+  // Else saved token not found, redirect back to Login
+  else {
+    return res.redirect("/login?error=please_login");
+  }
+};
 
 // Define helper function for health check
 const buildMemoryMB = () => {
@@ -94,6 +131,49 @@ const renderTemplate = (req, res, templateSlug) => {
   res.render(templateSlug, buildLocals(req, templateSlug));
 };
 
+const users = {
+  dylanized: "foobar",
+};
+
+const isUser = (username, password) => {
+  // If user and password match found, return true, else return false
+  return users[username] && users[username] === password;
+};
+
+// Mount route for api
+app.post("/api", (req, res) => {
+  // If username and password provided...
+  if (req.body.username && req.body.password) {
+    // And if valid user...
+    if (isUser(req.body.username, req.body.password)) {
+      // Create token and save it to cookie, then redirect to Home
+      let token = jwt.sign(
+        { username: req.body.username },
+        config.get("app.secret"),
+        {
+          expiresIn: "24h",
+        },
+      );
+      res.cookie("nug_auth", token);
+      res.redirect("/home");
+    }
+    // Else not valid user, redirect back to Login
+    else {
+      res.redirect("/login?error=invalid_login");
+    }
+  }
+  // else invalid request, redirect back to Login
+  else {
+    res.redirect("/login?error=invalid_login");
+  }
+});
+
+// Mount route for 'When user requests logout route, delete auth cookie and redirect to Root'
+app.get("/logout", (req, res, next) => {
+  res.clearCookie("nug_auth");
+  res.redirect("/");
+});
+
 // Mount route for 'When user requests an ejs file, reject it with a bare 404'
 app.get("/*.ejs", (req, res) => {
   res.sendStatus(404);
@@ -114,44 +194,34 @@ app.get("/css/:filename", (req, res, next) => {
   }
 });
 
-const protectedPages = ["/account", "/activity", "/explore", "/saved"];
+const protectedPages = ["/home", "/explore", "/activity", "/saved", "/account"];
 
 const publicPages = ["/login", "/signup"];
 
 const profiles = ["dylanized", "garrett", "jack", "foobar"];
 
-// Mount route for 'When user requests a template, try to render it'
+// Mount route for 'When user requests a proteced page, check token and try to render it'
+app.get(protectedPages, checkToken, (req, res, next) => {
+  renderTemplate(req, res, req.path.slice(1));
+});
+
+// Mount route for 'When user requests a public page, try to render it'
+app.get(publicPages, (req, res, next) => {
+  renderTemplate(req, res, req.path.slice(1));
+});
+
+// Mount route for 'When user requests a profile page, try to render it'
 app.get("/:slug", (req, res, next) => {
-  // If this is a protected page...
-  if (protectedPages.includes(`/${req.params.slug}`)) {
-    // If user logged in, render page, else return error
-    if (req.query.user) {
-      renderTemplate(req, res, req.params.slug);
-    } else {
-      res.redirect("/");
-    }
-  }
-  // Else if this page is a public page, show it
-  else if (publicPages.includes(`/${req.params.slug}`)) {
-    renderTemplate(req, res, req.params.slug);
-  }
-  // Else if this profile exists, show it...
-  else if (profiles.includes(req.params.slug)) {
+  if (profiles.includes(req.path.slice(1))) {
     renderTemplate(req, res, "profile");
-  }
-  // Else proceed
-  else {
+  } else {
     next();
   }
 });
 
 // Mount route for 'When user requests base domain, serve the homepage template'
 app.get("/", (req, res) => {
-  if (req.query.user) {
-    renderTemplate(req, res, "home");
-  } else {
-    renderTemplate(req, res, "index");
-  }
+  renderTemplate(req, res, "index");
 });
 
 // Mount route for 'When a user requests any file that doesn't exist, send bare 404'
