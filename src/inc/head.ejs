@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title><%= siteName %> :: <%= siteTagline %></title>
+    <title>nug :: a place to share</title>
     <% stylesheets.forEach((stylesheet) => { %>
       <link rel="stylesheet" href="<%= stylesheet %>">
     <% }); %>
@@ -12,7 +12,7 @@
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
   </head>
   <body class="page-social bg-slate">
-  <% if (req.cookies['nug_auth']) { %>
+  <% if (user) { %>
     <nav id="header-nav" class="midnite w-100 text-verdana d-flex">
       <ul class="list-inline">
         <li class="<% if (templateSlug === 'home') { %>active<% } %>"><a href="/home" class="hover-sunshine"><i class="fa-solid fa-house d-inline-block mr-05"></i><span class="d-none lg-d-inline"> Home</span></a></li>

@@ -114,7 +114,6 @@ app.set("views", path.join(__dirname, themePath));
 const themeConfig = JSON.parse(
   fs.readFileSync(`${themePath}/config/theme.json`),
 );
-const themeData = JSON.parse(fs.readFileSync(`${themePath}/config/data.json`));
 
 // Mount health check for dev server
 mountHealthCheck(app, {
@@ -122,9 +121,188 @@ mountHealthCheck(app, {
   themePath,
 });
 
-// Define view helpers
+const demoData = {
+  posts: [
+    {
+      authorHandle: "foobar",
+      authorName: "Foobar McGee",
+      content: "The quick brown fox jumps over the lazy dog",
+      timestamp: "1min",
+    },
+    {
+      authorHandle: "jerrbear",
+      authorName: "Jerry Garcia",
+      content: "Just testing out my nug",
+      timestamp: "1hr",
+    },
+    {
+      authorHandle: "foobar",
+      authorName: "Foobar McGee",
+      content: "Here is a link: https://google.com",
+      timestamp: "11s",
+    },
+    {
+      authorHandle: "lincoln",
+      authorName: "Honest Abe",
+      content:
+        "Four score and seven years ago our fathers brought forth, upon this continent, a new nation, conceived in liberty, and dedicated to the proposition that all men are created equal.",
+      timestamp: "1min",
+      location: "Springfield, Mass",
+    },
+    {
+      authorHandle: "jerrbear",
+      authorName: "Jerry Garcia",
+      content: "Just testing out my nug",
+      timestamp: "1hr",
+    },
+    {
+      authorHandle: "foobar",
+      authorName: "Foobar McGee",
+      content: "Here is a link: https://google.com",
+      timestamp: "11s",
+    },
+    {
+      authorHandle: "foobar",
+      authorName: "Foobar McGee",
+      content: "The quick brown fox jumps over the lazy dog",
+      timestamp: "1min",
+    },
+    {
+      authorHandle: "bobbyweir",
+      authorName: "Bob Weir",
+      content: "Come see Wolf Bros",
+      timestamp: "1hr",
+      location: "Marin County",
+    },
+    {
+      authorHandle: "foobar",
+      authorName: "Foobar McGee",
+      content: "Here is a link: https://google.com",
+      timestamp: "11s",
+    },
+  ],
+  topics: [
+    {
+      name: "Something",
+      count: 99,
+      slug: "something",
+    },
+    {
+      name: "Foobar",
+      count: 15,
+      slug: "foobar",
+    },
+    {
+      name: "somethingElse",
+      count: 12,
+      slug: "something-else",
+    },
+    {
+      name: "aTopic",
+      count: 300,
+      slug: "a-topic",
+    },
+    {
+      name: "anotherTopic",
+      count: 5005,
+      slug: "another-topic",
+    },
+    {
+      name: "foobar",
+      count: 100,
+      slug: "foobar",
+    },
+    {
+      name: "Biden2024",
+      count: 12,
+      slug: "biden-2024",
+    },
+    {
+      name: "USA",
+      count: 99,
+      slug: "usa",
+    },
+  ],
+  users: [
+    {
+      authorHandle: "foobar",
+      authorName: "Foobar McGee",
+    },
+    {
+      authorHandle: "jerrbear",
+      authorName: "Jerry Garcia",
+    },
+    {
+      authorHandle: "foobar",
+      authorName: "Foobar McGee",
+    },
+    {
+      authorHandle: "lincoln",
+      authorName: "Honest Abe",
+    },
+    {
+      authorHandle: "jerrbear",
+      authorName: "Jerry Garcia",
+    },
+    {
+      authorHandle: "foobar",
+      authorName: "Foobar McGee",
+    },
+  ],
+};
+
+// Define helper functions
+const helpers = {
+  getPosts: (limit = 15) => {
+    if (limit < demoData.posts.length) {
+      return demoData.posts.slice(0, limit);
+    } else {
+      return demoData.posts;
+    }
+  },
+  getTopics: (limit = 10) => {
+    if (limit < demoData.topics.length) {
+      return demoData.topics.slice(0, limit);
+    } else {
+      return demoData.topics;
+    }
+  },
+  getUsers: (limit = 5) => {
+    if (limit < demoData.users.length) {
+      return demoData.users.slice(0, limit);
+    } else {
+      return demoData.users;
+    }
+  },
+  getUser: (id = null) => {
+    return {
+      handle: "foobar",
+      desc: "Just a dude trying not to screw up",
+      link: "https://google.com",
+      name: "Foobar McGee",
+      posts: 99,
+      followers: 1200,
+      following: 5,
+      mentions: 15,
+    };
+  },
+};
+
+// Define view locals
 const buildLocals = (req, templateSlug) => {
-  return Object.assign({}, { req }, themeConfig, themeData, { templateSlug });
+  // Build locals object
+  const locals = Object.assign(
+    {},
+    { req },
+    themeConfig,
+    { templateSlug },
+    helpers,
+  );
+  // If user is logged in, mount user props
+  if (req.cookies["nug_auth"]) {
+    locals.user = helpers.getUser();
+  }
+  return locals;
 };
 
 const renderTemplate = (req, res, templateSlug) => {

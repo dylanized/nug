@@ -1,0 +1,10 @@
+<div class="panel bg-white info border-0 shadow d-none lg-d-block">
+  <h5 class="text-xs text-slate text-normal mb-2">People to Follow</h5>
+  <ul class="list-style-none ml-0 pl-0 mb-1">
+    <% getUsers(5).forEach(function (thisUser, i) { %>
+      <li class="mb-05">
+        <a href="/<%= thisUser.authorHandle %>" class="d-inline-block text-whale hover-cobalt text-underline-none"><span class="d-inline-block aspect-square bg-cloud align-middle" style="width:45px;"><img src="https://picsum.photos/45/45?<%= i %>" alt="" class="align-middle"/></span><h5 class="text-normal d-inline-block ml-05">@<%= thisUser.authorHandle %></h5></a>
+      </li>
+    <% }) %>
+  </ul>
+</div>
