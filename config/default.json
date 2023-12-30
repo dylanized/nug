@@ -5,6 +5,7 @@
     "logLevel": "error",
     "name": "fui-server",
     "port": 3000,
+    "secret": "worldisfullofdevelopers",
     "staticFolder": "dist"
   }
 }

@@ -1,18 +1,22 @@
 <%- include('inc/head'); %>
 <main class="w-100 p-1 md-p-2">
-  <div class="card w-400px mx-auto mt-5 bg-white">
+  <div class="card w-400px mx-auto mt-5 pb-3 bg-white">
     <h3>Login</h3>
-    <blockquote class="border-danger text-danger code">
-      Incorrect login!
-    </blockquote>
-    <fieldset class="mb-0">
-      <label class="sr-only" for="text-input">Username</label>
-      <input class="w-300px" id="text-input" type="text" value="" placeholder="Username">
-      <label class="sr-only" for="text-input">Password</label>
-      <input class="w-300px" id="text-input" type="password" value="" placeholder="Password">
-      <button class="btn">Login</button>
-      <a href="/signup" class="btn btn-clear">Signup</button>
-    </fieldset>
+    <% if (req.query.error) { %>
+      <blockquote class="border-danger text-danger code">
+        <%= req.query.error %>
+      </blockquote>
+    <% } %>
+    <form action="/api" method="POST">
+      <fieldset class="mb-0">
+        <label class="sr-only" for="username-input">Username</label>
+        <input class="w-300px" id="username-input" name="username" type="text" value="" placeholder="Username">
+        <label class="sr-only" for="password-input">Password</label>
+        <input class="w-300px" id="password-input" name="password" type="password" value="" placeholder="Password">
+        <button class="btn" name="submit">Login</button>
+        <a href="/signup" class="btn btn-clear">Signup</a>
+      </fieldset>
+    </form>
   </div>
 </main>
 <%- include('inc/foot') %>
