@@ -140,31 +140,46 @@ const isUser = (username, password) => {
   return users[username] && users[username] === password;
 };
 
-// Mount route for api
-app.post("/api", (req, res) => {
-  // If username and password provided...
-  if (req.body.username && req.body.password) {
-    // And if valid user...
-    if (isUser(req.body.username, req.body.password)) {
-      // Create token and save it to cookie, then redirect to Home
-      let token = jwt.sign(
-        { username: req.body.username },
-        config.get("app.secret"),
-        {
-          expiresIn: "24h",
-        },
-      );
-      res.cookie("nug_auth", token);
-      res.redirect("/home");
+const handlers = {
+  login: (req, res) => {
+    // If username and password provided...
+    if (req.body.username && req.body.password) {
+      // And if valid user...
+      if (isUser(req.body.username, req.body.password)) {
+        // Create token and save it to cookie, then redirect to Home
+        let token = jwt.sign(
+          { username: req.body.username },
+          config.get("app.secret"),
+          {
+            expiresIn: "24h",
+          },
+        );
+        res.cookie("nug_auth", token);
+        res.redirect("/home");
+      }
+      // Else not valid user, redirect back to Login
+      else {
+        res.redirect("/login?error=invalid_login");
+      }
     }
-    // Else not valid user, redirect back to Login
+    // else invalid request, redirect back to Login
     else {
       res.redirect("/login?error=invalid_login");
     }
-  }
-  // else invalid request, redirect back to Login
-  else {
-    res.redirect("/login?error=invalid_login");
+  },
+};
+
+// Mount route for api
+app.post("/api", (req, res, next) => {
+  // If valid handler provided, handle it, else send invalid code
+  if (req.body && req.body.handler && handlers[req.body.handler]) {
+    handlers[req.body.handler](req, res, next);
+  } else {
+    if (req.body && req.body.redirect) {
+      res.redirect(req.body.redirect);
+    } else {
+      res.sendStatus(400);
+    }
   }
 });
 

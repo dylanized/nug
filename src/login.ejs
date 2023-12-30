@@ -8,6 +8,8 @@
       </blockquote>
     <% } %>
     <form action="/api" method="POST">
+      <input type="hidden" name="handler" value="login">
+      <input type="hidden" name="redirect" value="/login">
       <fieldset class="mb-0">
         <label class="sr-only" for="username-input">Username</label>
         <input class="w-300px" id="username-input" name="username" type="text" value="" placeholder="Username">
