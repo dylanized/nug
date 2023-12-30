@@ -1,6 +1,6 @@
 <%- include('inc/head') %>
 <main class="md-d-flex w-100 col-gap-2 p-1 md-p-2">
-  <div class="panel bg-white info border-0 shadow w-100 md-w-50">
+  <div class="card pb-0 bg-white info border-0 shadow w-100 md-w-50 mx-auto">
     <h3>Account Settings</h3>
     <%- include('account-fields') %>
     <fieldset>
@@ -8,8 +8,8 @@
       <textarea class="w-500px" id="textarea-input"></textarea>
     </fieldset>
     <section>
-      <button class="btn">Save</button>
-      <button class="btn btn-clear">Cancel</button>
+      <button name="submit" class="btn">Save</button>
+      <a href="/home" class="btn btn-clear">Cancel</a>
     </section>
   </div>
 </main>

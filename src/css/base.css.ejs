@@ -398,6 +398,7 @@ ul.list-inline {
 nav ul {
   display: flex;
   justify-content: start;
+  position: relative;
 }
 
 nav li {
@@ -408,7 +409,7 @@ nav li {
 
 nav li a {
   margin: 0;
-  padding: 0.5rem 0.75rem;
+  padding: 0.95rem 1.25rem;
   display: inline-block;
   font-weight: bold;
   text-decoration: none;
@@ -419,8 +420,46 @@ nav a:visited {
   text-decoration: none;
 }
 
-nav li.active a:link,
-nav li.active a:visited {
+li.active a:link,
+li.active a:visited {
+  color: var(--color-sunshine) !important;
+}
+
+/* nav dropdowns */
+nav li ul {
+  display: none;
+  position: absolute;
+  right: 0;
+  background-color: var(--color-ocean);
+  marign: 0;
+  padding: 0;
+  min-width: 150px;
+}
+
+nav li:hover ul {
+  display: block;
+}
+
+nav li ul li {
+  display: block !important;
+  background-color: var(--color-ocean);
+  padding: 0;
+  margin: 0;
+  font-size: var(--text-xs);
+  line-height: 1.0;
+  text-align: right;
+}
+
+#header-nav li ul li a {
+  display: block !important;
+  font-weight: normal;
+  padding: .75rem 1rem .87rem 1rem;
+  border-bottom: 1px dashed var(--color-skyline);
+  color: white !important;
+}
+
+#header-nav li ul li a:hover,
+#header-nav li ul li a:active {
   color: var(--color-sunshine) !important;
 }
 
