@@ -3,7 +3,7 @@
     "defaultTheme": "alpha",
     "homeTemplate": "index",
     "logLevel": "error",
-    "name": "fui-server",
+    "name": "nug-server",
     "port": 3000,
     "secret": "worldisfullofdevelopers",
     "staticFolder": "dist"
