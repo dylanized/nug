@@ -8,6 +8,7 @@ const path = require("path");
 const pino = require("pino-http");
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
+const { faker } = require("@faker-js/faker");
 
 // Instantiate logger
 const logConfig = {
@@ -251,28 +252,64 @@ const demoData = {
   ],
 };
 
+const generatePosts = (count) => {
+  const items = [];
+  // For as many items as are requested...
+  for (let i = 0; i < count; i++) {
+    // Build item and add it to posts array
+    const item = {
+      authorHandle: faker.internet.userName().toLowerCase(),
+      authorName: faker.internet.displayName(),
+      content: faker.lorem.sentence(),
+      timestamp: `${faker.number.int({ max: 10, min: 1 })}hr`,
+    };
+    if (true) {
+      item.location = faker.location.city();
+    }
+    items.push(item);
+  }
+  return items;
+};
+
+const generateTopics = (count) => {
+  const items = [];
+  // For as many items as are requested...
+  for (let i = 0; i < count; i++) {
+    // Build item and add it to posts array
+    const item = {
+      content: faker.lorem.words(3),
+      count: faker.number.int({ max: 1000 }),
+      slug: faker.lorem.slug(3),
+    };
+    items.push(item);
+  }
+  return items;
+};
+
+const generateUsers = (count) => {
+  const items = [];
+  // For as many items as are requested...
+  for (let i = 0; i < count; i++) {
+    // Build item and add it to posts array
+    const items = {
+      authorHandle: "foobar", //faker.internet.userName(),
+      authorName: "foobar", //faker.internet.displayName(),
+    };
+    items.push(item);
+  }
+  return items;
+};
+
 // Define helper functions
 const helpers = {
   getPosts: (limit = 15) => {
-    if (limit < demoData.posts.length) {
-      return demoData.posts.slice(0, limit);
-    } else {
-      return demoData.posts;
-    }
+    return generatePosts(limit);
   },
   getTopics: (limit = 10) => {
-    if (limit < demoData.topics.length) {
-      return demoData.topics.slice(0, limit);
-    } else {
-      return demoData.topics;
-    }
+    return generateTopics(limit);
   },
   getUsers: (limit = 5) => {
-    if (limit < demoData.users.length) {
-      return demoData.users.slice(0, limit);
-    } else {
-      return demoData.users;
-    }
+    return generateUsers(limit);
   },
   getUser: (id = null) => {
     return {
